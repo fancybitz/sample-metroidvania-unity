@@ -6,9 +6,11 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rigidbody2D;
     private BoxCollider2D boxCollider2D;
+    private SpriteRenderer spriteRenderer;
     private Vector2 speedForce = new Vector2(3, 0);
     private Vector2 jumpForce = new Vector2(0, 1.5f);
     private bool isLadder = false;
+    private bool facingLeft = false;
 
     private float horiz = 0;
     private float vert = 0;
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2D.gravityScale = 1;
     }
 
@@ -55,6 +58,24 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (horiz != 0) {
+            if (horiz > 0)
+            {
+                facingLeft = false;
+            }
+            else {
+                facingLeft = true;
+            }
+        }
+
+        if (facingLeft)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
     }
 
     private bool isGrounded() {
