@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
             Debug.Log(hit.point.y);
         }
 
-        if (isGrounded() && Input.GetKey(KeyCode.Space)) {
+        if (!isLadder && isGrounded() && Input.GetKey(KeyCode.Space)) {
             rigidbody2D.AddForce(jumpForce, ForceMode2D.Impulse);
         }
     }
