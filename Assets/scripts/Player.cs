@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
     private Vector2 speedForce = new Vector2(3, 0);
     private Vector2 jumpForce = new Vector2(0, 1.5f);
     private bool isLadder = false;
-    private bool climbing = false;
-    private GameObject climbableGameObject;
 
     private float horiz = 0;
     private float vert = 0;
@@ -79,7 +77,6 @@ public class Player : MonoBehaviour
         if (collision.tag == "Ladder")
         {
             isLadder = true;
-            climbableGameObject = collision.gameObject;
 
             rigidbody2D.gravityScale = 0;
 
@@ -92,8 +89,6 @@ public class Player : MonoBehaviour
         if (collision.tag == "Ladder")
         {
             isLadder = false;
-            climbing = false;
-            climbableGameObject = null;
 
             rigidbody2D.gravityScale = 1;
 
