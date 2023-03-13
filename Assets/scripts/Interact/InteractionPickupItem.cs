@@ -20,9 +20,10 @@ public class InteractionPickupItem : Interaction
                 {
                     for (int i = 0; i < items.Length; i++) {
                         inventory.addItem(items[i], 1);
-                        player.setInventory(inventory);
+                        Debug.Log("Added item " + items[i].name + " to players inventory");
                     }
                     
+                    player.setInventory(inventory);
                     items = null;
                 }
             }

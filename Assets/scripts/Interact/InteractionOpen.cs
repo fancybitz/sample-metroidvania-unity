@@ -18,6 +18,7 @@ public class InteractionOpen : Interaction
                 Inventory inventory = player.getInventory();
                 if (inventory != null && inventory.contains(requiredObject))
                 {
+                    Debug.Log("Used item " + requiredObject + " to open");
                     // TODO: goto
                 }
                 else { 
