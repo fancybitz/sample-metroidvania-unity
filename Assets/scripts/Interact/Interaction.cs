@@ -5,13 +5,14 @@ using UnityEngine;
 public abstract class Interaction : MonoBehaviour
 {
     public GameObject icon;
+    public KeyCode interactionKeyCode = Constants.INTERACTION_KEY;
     private GameObject instantiatedIcon;
-    private SpriteRenderer spriteRenderer;
+    private BoxCollider2D boxCollider2D;
 
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
 
         if (icon == null)
         {
@@ -23,7 +24,7 @@ public abstract class Interaction : MonoBehaviour
     void Update()
     {
         if (instantiatedIcon != null) {
-            instantiatedIcon.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + (spriteRenderer.size.y / 2));
+            instantiatedIcon.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + (boxCollider2D.bounds.size.y / 2));
         }
     }
 
@@ -45,7 +46,7 @@ public abstract class Interaction : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && Input.GetKey(Constants.INTERACTION_KEY))
+        if (collision.tag == "Player" && Input.GetKey(interactionKeyCode))
         {
             interact(collision);
         }

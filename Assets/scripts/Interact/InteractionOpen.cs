@@ -21,7 +21,8 @@ public class InteractionOpen : Interaction
                     Debug.Log("Used item " + requiredObject + " to open");
                     // TODO: goto
                 }
-                else { 
+                else {
+                    Debug.Log("Item needed to open door: " + requiredObject);
                     // TODO: popup message error
                 }
             }
