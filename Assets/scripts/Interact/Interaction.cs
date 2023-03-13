@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class UIInteractionPopup : MonoBehaviour
+public abstract class Interaction : MonoBehaviour
 {
     public GameObject icon;
     private GameObject instantiatedIcon;
@@ -47,10 +47,10 @@ public abstract class UIInteractionPopup : MonoBehaviour
     {
         if (collision.tag == "Player" && Input.GetKey(Constants.INTERACTION_KEY))
         {
-            interact();
+            interact(collision);
         }
     }
 
-    public abstract void interact();
+    public abstract void interact(Collider2D collision);
 }
 

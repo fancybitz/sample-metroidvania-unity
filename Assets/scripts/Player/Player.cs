@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Inventory inventory;
+
     private Rigidbody2D rigidbody2D;
     private BoxCollider2D boxCollider2D;
     private SpriteRenderer spriteRenderer;
@@ -15,13 +17,14 @@ public class Player : MonoBehaviour
     private float horiz = 0;
     private float vert = 0;
 
-
     private float raySpan = 0.1f;
     private Color raycastColor = Color.green;
 
     // Start is called before the first frame update
     void Start()
     {
+        inventory = new Inventory();
+
         rigidbody2D = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -48,7 +51,6 @@ public class Player : MonoBehaviour
             // Calculate the distance from the surface and the "error" relative
             // to the floating height.
             float distance = Mathf.Abs(hit.point.y - transform.position.y);
-            Debug.Log(hit.point.y);
         }
 
         if (!isLadder && isGrounded() && Input.GetKey(KeyCode.Space)) {
@@ -117,10 +119,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == "Interactable") { 
-            
-        }
+    public Inventory getInventory() {
+        return this.inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 }
