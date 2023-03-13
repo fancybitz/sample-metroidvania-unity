@@ -116,4 +116,11 @@ public class Player : MonoBehaviour
             speedForce = new Vector2(3, 0);
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Interactable") { 
+            
+        }
+    }
 }

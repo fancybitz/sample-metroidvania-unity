@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIPopupTooltip : MonoBehaviour
+public abstract class UIInteractionPopup : MonoBehaviour
 {
-    private bool showIcon = false;
     public GameObject icon;
     private GameObject instantiatedIcon;
     private SpriteRenderer spriteRenderer;
@@ -24,7 +23,6 @@ public class UIPopupTooltip : MonoBehaviour
     void Update()
     {
         if (instantiatedIcon != null) {
-            //            GameObject.Instantiate(icon, new Vector3(), Quaternion.identity);
             instantiatedIcon.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + (spriteRenderer.size.y / 2));
         }
     }
@@ -44,5 +42,15 @@ public class UIPopupTooltip : MonoBehaviour
             Destroy(instantiatedIcon);
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Player" && Input.GetKey(Constants.INTERACTION_KEY))
+        {
+            interact();
+        }
+    }
+
+    public abstract void interact();
 }
 
