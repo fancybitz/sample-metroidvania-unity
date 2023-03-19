@@ -1,0 +1,62 @@
+{
+    "states": [
+        {
+            "start": true,
+            "id": 0,
+            "sentence": "henlo",
+            "transitions": [
+                {
+                    "sentence": "come va?",
+                    "next_id": 1
+                },
+                {
+                    "sentence": "end",
+                    "next_id": 4
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "sentence": "bene tu?",
+            "transitions": [
+                {
+                    "sentence": "bene",
+                    "next_id": 4
+                },
+                {
+                    "sentence": "hai qualcosa da vendere?",
+                    "next_id": 2
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "sentence": "si",
+            "transitions": [
+                {
+                    "sentence": "take a look",
+                    "next_id": 3
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "sentence": "show",
+            "transitions": [
+                {
+                    "sentence": "end",
+                    "next_id": 4
+                },
+                {
+                    "sentence": "not interested",
+                    "next_id": 1
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "sentence": "Arrivederci",
+            "transitions": []
+        }
+    ]
+}
